@@ -19,7 +19,7 @@ export const signup = async(req,res)=>{
         storeRefreshToken(user._id,refreshToken);
         setCookies(res,accessToken,refreshToken);
         res.status(201).json({
-            name:user.fullName,
+            name:user.username,
             message:"User Created Successfully",
             success:true
         })
@@ -45,8 +45,8 @@ export const login =async(req,res)=>{
         const { accessToken, refreshToken } = generateToken(user._id);
         storeRefreshToken(user._id,refreshToken);
         setCookies(res,accessToken,refreshToken);
-        res.status(201).json({
-            name:user.fullName,
+        res.status(200).json({
+            name:user.username,
             message:"User Logged In Successfully",
             success:true
         })
@@ -103,5 +103,21 @@ export const refreshToken =async(req,res)=>{
     catch(error){
         console.log("Error in refreshToken controller", error.message);
 		res.status(500).json({ message: "Server error", error: error.message });
+    }
+}
+
+export const getuser=async(req,res)=>{
+    try {
+        const user=req.user;
+        res.status(200).json({
+            user,
+            success:true,
+            message:"This is the user"
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message:"Server Error",
+            error:error.message,
+        })
     }
 }
