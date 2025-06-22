@@ -11,7 +11,7 @@ export default function page() {
   console.log(user)
   return (
     <div>
-      <Navbar/>
+     
       <HeroSection/>
       <HowItWorks/>
     </div>

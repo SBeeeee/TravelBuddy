@@ -4,7 +4,7 @@ import { MapPin, Users, Car } from "lucide-react"
 
 export default function HowItWorks() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white via-gray-50 to-white">
+    <section className="py-20">
       <div className="max-w-5xl mx-auto px-4 text-center">
         {/* Title */}
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">How It Works</h2>
@@ -15,7 +15,7 @@ export default function HowItWorks() {
         {/* Steps Grid */}
         <div className="grid gap-6 md:grid-cols-3">
           {/* Step 1 */}
-          <div className="bg-white rounded-xl p-6 shadow hover:shadow-md transition-all">
+          <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-md transition-all">
             <div className="mx-auto mb-4 h-12 w-12 flex items-center justify-center rounded-lg bg-gradient-to-r from-indigo-500 to-blue-500 text-white">
               <MapPin className="h-6 w-6" />
             </div>
@@ -26,7 +26,7 @@ export default function HowItWorks() {
           </div>
 
           {/* Step 2 */}
-          <div className="bg-white rounded-xl p-6 shadow hover:shadow-md transition-all">
+          <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-md transition-all">
             <div className="mx-auto mb-4 h-12 w-12 flex items-center justify-center rounded-lg bg-gradient-to-r from-pink-500 to-purple-500 text-white">
               <Users className="h-6 w-6" />
             </div>
@@ -37,7 +37,7 @@ export default function HowItWorks() {
           </div>
 
           {/* Step 3 */}
-          <div className="bg-white rounded-xl p-6 shadow hover:shadow-md transition-all">
+          <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-md transition-all">
             <div className="mx-auto mb-4 h-12 w-12 flex items-center justify-center rounded-lg bg-gradient-to-r from-rose-500 to-red-500 text-white">
               <Car className="h-6 w-6" />
             </div>
