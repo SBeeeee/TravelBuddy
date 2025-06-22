@@ -1,5 +1,6 @@
 "use client"
 import HeroSection from '@/components/HeroSection';
+import HowItWorks from '@/components/HowItWorks';
 import Navbar from '@/components/Navbar';
 import React from 'react'
 import { useSelector } from 'react-redux'
@@ -12,6 +13,7 @@ export default function page() {
     <div>
       <Navbar/>
       <HeroSection/>
+      <HowItWorks/>
     </div>
   )
 }
