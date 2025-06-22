@@ -11,7 +11,7 @@ export default function Navbar() {
 
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "Find Rides", href: "/dashboard" },
+    { name: "Find Rides", href: "/AllRides" },
     { name: "Post Ride", href: "/create" },
     { name: "My Plans", href: "/my-plans" },
   ]
