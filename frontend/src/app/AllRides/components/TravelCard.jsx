@@ -11,7 +11,7 @@ export default function TravelCard({ plan }) {
   
 
   return (
-    <div className="overflow-hidden  rounded-xl shadow-lg border bg-white hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 mx-2">
+    <div className="overflow-hidden  rounded-xl shadow-lg border border-gray-500 bg-white hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 mx-2">
       {/* Gradient Header */}
       <div className={`bg-gradient-to-r ${color} p-6 text-white relative`}>
         {/* Background Circles */}
