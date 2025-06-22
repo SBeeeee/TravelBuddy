@@ -1,4 +1,5 @@
 "use client"
+import Private from '@/utils/Private';
 import React from 'react'
 import { useSelector } from 'react-redux'
 
@@ -8,7 +9,10 @@ export default function page() {
   console.log(user)
   return (
     <div>
-      hello {user}
+      <Private>
+      hello {user?.username || "okay"}
+
+      </Private>
     </div>
   )
 }

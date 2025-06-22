@@ -1,4 +1,3 @@
-// src/lib/axiosInstance.ts
 import axios from "axios";
 
 const axiosInstance = axios.create({
@@ -14,24 +13,19 @@ axiosInstance.interceptors.response.use(
     // If unauthorized and not retried yet
     if (
       error.response?.status === 401 &&
-      !originalRequest._retry
+      !originalRequest._retry &&
+      !originalRequest.url.includes("/refresh-token") // prevent loop
     ) {
       originalRequest._retry = true;
-
       try {
-        // Refresh access token
         await axiosInstance.post("/user/refresh-token");
-
-        // Retry original request
         return axiosInstance(originalRequest);
       } catch (refreshError) {
-        console.error("🔒 Refresh token invalid or expired");
-
-        // Redirect to login
+        // Clear auth state when refresh fails
         if (typeof window !== "undefined") {
-          window.location.href = "/auth/login";
+          // Dispatch logout action or clear localStorage if needed
+          alert("u need to login")// Changed to login page
         }
-
         return Promise.reject(refreshError);
       }
     }
