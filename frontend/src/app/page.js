@@ -1,5 +1,6 @@
 "use client"
-import Private from '@/utils/Private';
+import HeroSection from '@/components/HeroSection';
+import Navbar from '@/components/Navbar';
 import React from 'react'
 import { useSelector } from 'react-redux'
 
@@ -9,10 +10,8 @@ export default function page() {
   console.log(user)
   return (
     <div>
-      <Private>
-      hello {user?.username || "okay"}
-
-      </Private>
+      <Navbar/>
+      <HeroSection/>
     </div>
   )
 }
