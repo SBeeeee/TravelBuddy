@@ -22,7 +22,7 @@ const rideSchema = new mongoose.Schema(
     },
     transport: {
       type: String,
-      enum: ["car", "bus", "train", "flight"],
+      enum: ["Cab", "Auto", "Train", "Flight","Bus"],
       required: true,
     },
     seats: {
