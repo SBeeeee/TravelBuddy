@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState={
-    rides:null,
+    rides:[],
+    myrides:[],
     totalPages: 1,
     Query:{page:1,
     limit:10,
@@ -25,9 +26,12 @@ const rideSlice=createSlice({
                 ...state.Query,
                 ...action.payload,
             }
+        },
+        setMyRides:(state,action)=>{
+            state.myrides=action.payload;
         }
     }
 })
 
-export const {setRides,setQuery}=rideSlice.actions;
+export const {setRides,setQuery,setMyRides}=rideSlice.actions;
 export default rideSlice.reducer;

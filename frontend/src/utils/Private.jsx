@@ -1,13 +1,13 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import { login, logout, setLoading } from '@/store/auth/slice';
+import { login, logout, setAuthload } from '@/store/auth/slice';
 import { CheckAuth } from './CheckAuth';
 import Link from "next/link";
 
 export default function Private({ children }) {
   const dispatch = useDispatch();
-  const { isAuthenticated, user, isLoading } = useSelector((state) => state.auth);
+  const { isAuthenticated, user, authload } = useSelector((state) => state.auth);
   const [authChecked, setAuthChecked] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function Private({ children }) {
       // Prevent multiple auth checks
       if (authChecked) return;
       
-      dispatch(setLoading(true));
+      dispatch(setAuthload(true));
       
       try {
         const userData = await CheckAuth();
@@ -28,7 +28,7 @@ export default function Private({ children }) {
         console.log("Authentication failed:", err);
         dispatch(logout());
       } finally {
-        dispatch(setLoading(false));
+        dispatch(setAuthload(false));
         setAuthChecked(true);
       }
     };
@@ -37,7 +37,7 @@ export default function Private({ children }) {
   }, [dispatch, authChecked]);
 
   // Show loading state
-  if (isLoading || !authChecked) {
+  if (authload || !authChecked) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center text-gray-600 text-xl">

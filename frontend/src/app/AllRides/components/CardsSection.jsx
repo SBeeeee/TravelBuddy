@@ -12,7 +12,7 @@ export default function CardsSection() {
   const {rides,Query}=useSelector((state)=>state.ride);
   const {isLoading}=useSelector((state)=>state.auth);
   const getrides = async () => {
-    dispatch(setLoading(true));  // ✅ Start loading
+    dispatch(setLoading(true));  
     try {
       const data = await getAllRides(Query);
       dispatch(setRides({rides:data.rides,totalPages: data.totalPages,}));

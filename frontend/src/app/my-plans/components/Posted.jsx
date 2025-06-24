@@ -1,46 +1,46 @@
 "use client"
-import React from "react"
+import React,{useEffect} from "react"
 import MyTravelCard from "./MyTravelCards"
+import { getmyrides } from "./api/myride.api"
+import { useDispatch,useSelector } from "react-redux";
+import { setLoading } from "@/store/auth/slice";
+import { setMyRides } from "@/store/Rides/slice";
 
 
-const myDemoData = [
-  {
-    id: 1,
-    origin: "VIT Vellore",
-    destination: "Chennai Airport",
-    date: "2025-06-26",
-    time: "08:30 AM",
-    transport: "cab",
-    seats: 2,
-    price: 500,
-  },
-  {
-    id: 2,
-    origin: "Katpadi",
-    destination: "Bangalore",
-    date: "2025-06-28",
-    time: "05:45 PM",
-    transport: "train",
-    seats: 4,
-    price: 350,
-  },
-  {
-    id: 3,
-    origin: "VIT Vellore",
-    destination: "Pondicherry",
-    date: "2025-06-29",
-    time: "11:00 AM",
-    transport: "auto",
-    seats: 1,
-    price: 150,
-  },
-]
 
 export default function Posted() {
+  const dispatch=useDispatch();
+  const {myrides}=useSelector((state)=>state.ride);
+  const {isLoading}=useSelector((state)=>state.auth);
+  const getrides=async()=>{
+    dispatch(setLoading(true));
+  
+  try{
+    const data=await getmyrides();
+    console.log("🚀 Received data:", data); // 
+    dispatch(setMyRides(data.rides))
+  }
+  catch(error){
+    console.log("Error fetching rides", error);
+  }
+  finally {
+    dispatch(setLoading(false)); // ✅ Stop loading after fetch or error
+  }
+  }
+useEffect(()=>{
+  getrides();
+  
+},[])
+if(isLoading){
+  return(
+    <div>Loading.....</div>
+  )
+}
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
-      {myDemoData.map((plan) => (
-        <MyTravelCard key={plan.id} plan={plan} />
+      {myrides.map((plan) => (
+        <MyTravelCard key={plan._id} plan={plan} />
       ))}
     </div>
   )

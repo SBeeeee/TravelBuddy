@@ -99,3 +99,33 @@ export const myrides=async(req,res)=>{
     }
 }
 
+export const deleteride=async(req,res)=>{
+    try{
+        const rideId = req.params.id;
+        const userId = req.user._id;
+    
+        const ride = await Ride.findOne({ _id: rideId, createdBy: userId });
+        if (!ride) {
+            return res.status(404).json({
+              success: false,
+              message: "Ride not found or you're not authorized to delete it",
+            });
+          }
+    
+          await Ride.deleteOne({ _id: rideId });
+          
+          res.status(200).json({
+            success: true,
+            message: "Ride deleted successfully",
+          });
+    }
+    catch(error){
+        console.error("Error deleting ride:", error);
+        res.status(500).json({
+          success: false,
+          message: "Internal server error while deleting ride",
+          error: error.message,
+        });
+    }
+    
+}
