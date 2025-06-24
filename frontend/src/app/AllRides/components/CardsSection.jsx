@@ -1,21 +1,21 @@
 "use client"
 import React,{useEffect} from 'react'
-import { demodata } from './helper'
+
 import {useSelector,useDispatch} from "react-redux"
 import TravelCard from './TravelCard'
 import { getAllRides } from '../api/rides.api'
-import { setRides } from '@/store/Rides/slice'
+import { setRides,setQuery } from '@/store/Rides/slice'
 import { setLoading } from '@/store/auth/slice'
 
 export default function CardsSection() {
   const dispatch=useDispatch();
-  const {rides}=useSelector((state)=>state.ride);
+  const {rides,Query}=useSelector((state)=>state.ride);
   const {isLoading}=useSelector((state)=>state.auth);
   const getrides = async () => {
     dispatch(setLoading(true));  // ✅ Start loading
     try {
-      const data = await getAllRides();
-      dispatch(setRides(data));
+      const data = await getAllRides(Query);
+      dispatch(setRides(data.rides));
     } catch (error) {
       console.log("Error fetching rides", error);
     } finally {
@@ -25,7 +25,7 @@ export default function CardsSection() {
   useEffect(()=>{
     getrides();
     
-  },[])
+  },[Query])
 
   if(isLoading){
     return(

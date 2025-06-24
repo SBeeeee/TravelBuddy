@@ -2,6 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState={
     rides:null,
+    Query:{page:1,
+    limit:10,
+    origin:"",
+    destination:"",
+    date:"",
+    transport:"Any mode",
+    }
 }
 
 const rideSlice=createSlice({
@@ -10,9 +17,15 @@ const rideSlice=createSlice({
     reducers:{
         setRides:(state,action)=>{
             state.rides=action.payload;
+        },
+        setQuery:(state,action)=>{
+            state.Query={
+                ...state.Query,
+                ...action.payload,
+            }
         }
     }
 })
 
-export const {setRides}=rideSlice.actions;
+export const {setRides,setQuery}=rideSlice.actions;
 export default rideSlice.reducer;
