@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState={
     rides:null,
+    totalPages: 1,
     Query:{page:1,
     limit:10,
     origin:"",
@@ -16,7 +17,8 @@ const rideSlice=createSlice({
     initialState,
     reducers:{
         setRides:(state,action)=>{
-            state.rides=action.payload;
+            state.rides = action.payload.rides;
+            state.totalPages = action.payload.totalPages;
         },
         setQuery:(state,action)=>{
             state.Query={

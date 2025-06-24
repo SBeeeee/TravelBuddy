@@ -1,10 +1,11 @@
 "use client"
 import React,{useState} from "react";
 import { Search } from "lucide-react";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { setQuery,setRides } from "@/store/Rides/slice";
 import { setLoading } from "@/store/auth/slice";
 import { getAllRides } from "../api/rides.api";
+import Pagination from "./Pagination";
 
 export default function SearchFilters() {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ export default function SearchFilters() {
   const [destination, setDestination] = useState("");
   const [date, setDate] = useState("");
   const [transport, setTransport] = useState("Any mode");
+  const {totalPages}=useSelector((state)=>state.ride);
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -28,7 +30,7 @@ export default function SearchFilters() {
     dispatch(setLoading(true));
     try {
       const data = await getAllRides(queryPayload);
-      dispatch(setRides(data.rides));
+      dispatch(setRides({rides:data.rides,totalPages}));
     } catch (err) {
       console.error("Error fetching filtered rides:", err);
     } finally {
@@ -125,6 +127,7 @@ export default function SearchFilters() {
           </button>
         </div>
       </form>
+      <Pagination/>
     </div>
   
   );

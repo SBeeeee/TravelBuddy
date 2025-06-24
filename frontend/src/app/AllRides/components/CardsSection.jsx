@@ -15,7 +15,7 @@ export default function CardsSection() {
     dispatch(setLoading(true));  // ✅ Start loading
     try {
       const data = await getAllRides(Query);
-      dispatch(setRides(data.rides));
+      dispatch(setRides({rides:data.rides,totalPages: data.totalPages,}));
     } catch (error) {
       console.log("Error fetching rides", error);
     } finally {
