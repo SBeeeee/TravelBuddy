@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
 import { Car, Menu, X } from "lucide-react"
+import User from "./User"
 
 export default function Navbar() {
   const pathname = usePathname()
@@ -50,18 +51,7 @@ export default function Navbar() {
 
           {/* Login/Signup Buttons */}
           <div className="hidden md:flex items-center space-x-3">
-            <Link
-              href="/login"
-              className="text-sm font-medium text-gray-700 hover:text-gray-900 px-4 py-2"
-            >
-              Log In
-            </Link>
-            <Link
-              href="/signup"
-              className="text-sm font-medium text-white px-4 py-2 rounded-md bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-md transition-all"
-            >
-              Sign Up
-            </Link>
+           <User/>
           </div>
 
           {/* Mobile menu button */}

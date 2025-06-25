@@ -24,7 +24,7 @@ axiosInstance.interceptors.response.use(
         // Clear auth state when refresh fails
         if (typeof window !== "undefined") {
           // Dispatch logout action or clear localStorage if needed
-          alert("u need to login")// Changed to login page
+            // Changed to login page
         }
         return Promise.reject(refreshError);
       }
