@@ -4,9 +4,9 @@ import bcrypt from "bcrypt";
 import { generateToken,storeRefreshToken,setCookies } from "../utils/user.utils.js";
 
 export const signup = async(req,res)=>{
-    const {email,password,username}=req.body;
+    const {phone,password,username}=req.body;
     try {
-        const userExists=await User.findOne({email});
+        const userExists=await User.findOne({phone});
 
         if (userExists) {
 			return res.status(400).json({ message: "User already exists" });
@@ -14,7 +14,7 @@ export const signup = async(req,res)=>{
         const salt=await bcrypt.genSalt(10);
         const hash=await bcrypt.hash(password,salt);
 
-        const user = await User.create({ username, email, password:hash });
+        const user = await User.create({ username, phone, password:hash });
         const { accessToken, refreshToken } = generateToken(user._id);
         storeRefreshToken(user._id,refreshToken);
         setCookies(res,accessToken,refreshToken);
@@ -34,13 +34,13 @@ export const login =async(req,res)=>{
         const {username,password}=req.body;
         const user= await User.findOne({username});
         if(!user){
-            return res.status(400).json({message:"Invalid email or password"});
+            return res.status(400).json({message:"Invalid username or password"});
         }
 
         const isMatch=await bcrypt.compare(password,user.password);
 
         if(!isMatch){
-            return res.status(400).json({message:"Invalid email or password"})
+            return res.status(400).json({message:"Invalid username or password"})
         }
         const { accessToken, refreshToken } = generateToken(user._id);
         storeRefreshToken(user._id,refreshToken);

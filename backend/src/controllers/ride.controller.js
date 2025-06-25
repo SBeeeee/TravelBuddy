@@ -59,7 +59,7 @@ try {
     const rides = await Ride.find(filters)
     .skip(skip)
     .limit(parseInt(limit))
-    .populate({ path: "createdBy", select: "username -_id" })
+    .populate({ path: "createdBy", select: "username phone -_id" })
     .sort({ date: 1 });
 
     res.status(200).json({

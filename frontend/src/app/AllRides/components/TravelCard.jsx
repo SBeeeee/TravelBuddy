@@ -97,13 +97,15 @@ export default function TravelCard({ plan }) {
 
       {/* Footer */}
       <div className="bg-gray-50 p-6 border-t border-gray-100">
-        <Link
-          href={`/travel-plan/${plan.id}`}
-          className="block w-full text-center text-white font-medium py-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
-        >
-          View Details
-          <ArrowRight className="inline ml-2 h-4 w-4" />
-        </Link>
+      <a
+  href={`https://wa.me/${plan.createdBy.phone}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="block w-full text-center text-white font-medium py-2 rounded-lg bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+>
+  Contact via WhatsApp
+  <ArrowRight className="inline ml-2 h-4 w-4" />
+</a>
       </div>
     </div>
   )
