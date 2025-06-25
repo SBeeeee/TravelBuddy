@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { getinfo, formatDate } from "@/app/AllRides/components/helper";
 import { MapPin, Calendar, Clock, Users, ArrowRight, Pencil, Trash } from "lucide-react";
-import DeleteModal from "./DeleteModal"; // 👈 import modal
+import DeleteModal from "./DeleteModal"; 
+import EditModal from "./EditModal";
 import { useDispatch,useSelector } from "react-redux";
 import { setMyRides } from "@/store/Rides/slice";
 import { deleteride } from "./api/myride.api";
@@ -10,6 +11,7 @@ import { deleteride } from "./api/myride.api";
 export default function MyTravelCard({ plan }) {
   const { icon, color } = getinfo(plan.transport);
   const [showModal, setShowModal] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
   const {myrides} = useSelector((state) => state.ride);
   const dispatch = useDispatch();
 
@@ -110,7 +112,9 @@ export default function MyTravelCard({ plan }) {
 
         {/* Footer Actions */}
         <div className="bg-gray-50 px-6 py-4 border-t border-gray-100 flex justify-between">
-          <button className="flex items-center gap-2 text-sm font-medium text-blue-600 hover:underline">
+          <button 
+           onClick={() => setEditModalOpen(true)}
+           className="flex items-center gap-2 text-sm font-medium text-blue-600 hover:underline">
             <Pencil className="w-4 h-4" />
             Edit
           </button>
@@ -130,6 +134,17 @@ export default function MyTravelCard({ plan }) {
         onClose={() => setShowModal(false)}
         onConfirm={handleDelete}
       />
+      <EditModal
+  isOpen={editModalOpen}
+  onClose={() => setEditModalOpen(false)}
+  ride={plan}
+  onUpdate={(updatedRide) => {
+    const updatedRides = myrides.map((r) =>
+      r._id === updatedRide._id ? updatedRide : r
+    );
+    dispatch(setMyRides(updatedRides));
+  }}
+/>
     </>
   );
 }

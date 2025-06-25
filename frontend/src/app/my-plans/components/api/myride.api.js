@@ -11,12 +11,23 @@ export const getmyrides=async()=>{
     }
 }
 
-export const deleteride=async(userid)=>{
+export const deleteride=async(id)=>{
     try{
-        const res=await axiosInstance.delete(`/rides/deleteride/${userid}`)
+        const res=await axiosInstance.delete(`/rides/deleteride/${id}`)
         return res.data;
     }
     catch(error){
+        console.log(error);
+        throw error;
+    }
+}
 
+export const updateride=async(id,formdata)=>{
+    try {
+        const res=await axiosInstance.patch(`/rides/updateride/${id}`,formdata)
+        return res.data;
+    } catch (error) {
+        console.log(error);
+        throw error;
     }
 }

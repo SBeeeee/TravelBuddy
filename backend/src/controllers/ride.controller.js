@@ -129,3 +129,37 @@ export const deleteride=async(req,res)=>{
     }
     
 }
+
+export const updateRide=async(req,res)=>{
+    try{
+        const rideId = req.params.id;
+        const userId = req.user._id;
+        const updateData = req.body;
+
+        const ride = await Ride.findOne({ _id: rideId, createdBy: userId });
+        if (!ride) {
+            return res.status(404).json({
+              success: false,
+              message: "Ride not found or you're not authorized to edit it",
+            });
+          }
+        
+        Object.keys(updateData).forEach((key) => {
+            ride[key] = updateData[key];
+        });
+        await ride.save();
+        res.status(200).json({
+            success: true,
+            message: "Ride updated successfully",
+            ride,
+          });
+    }
+    catch(error){
+        console.error("Error updating ride:", error);
+        res.status(500).json({
+          success: false,
+          message: "Internal server error while updating ride",
+          error: error.message,
+        });
+    }
+}

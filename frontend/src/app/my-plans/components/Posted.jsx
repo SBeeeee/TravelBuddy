@@ -17,7 +17,6 @@ export default function Posted() {
   
   try{
     const data=await getmyrides();
-    console.log("🚀 Received data:", data); // 
     dispatch(setMyRides(data.rides))
   }
   catch(error){
