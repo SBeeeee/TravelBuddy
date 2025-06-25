@@ -10,3 +10,13 @@ export const getmyrides=async()=>{
         throw error;
     }
 }
+
+export const deleteride=async(userid)=>{
+    try{
+        const res=await axiosInstance.delete(`/rides/deleteride/${userid}`)
+        return res.data;
+    }
+    catch(error){
+
+    }
+}

@@ -3,16 +3,32 @@ import React, { useState } from "react";
 import { getinfo, formatDate } from "@/app/AllRides/components/helper";
 import { MapPin, Calendar, Clock, Users, ArrowRight, Pencil, Trash } from "lucide-react";
 import DeleteModal from "./DeleteModal"; // 👈 import modal
-import { useDispatch } from "react-redux";
-import { setRides } from "@/store/Rides/slice";
+import { useDispatch,useSelector } from "react-redux";
+import { setMyRides } from "@/store/Rides/slice";
+import { deleteride } from "./api/myride.api";
 
 export default function MyTravelCard({ plan }) {
   const { icon, color } = getinfo(plan.transport);
   const [showModal, setShowModal] = useState(false);
+  const {myrides} = useSelector((state) => state.ride);
   const dispatch = useDispatch();
 
   const handleDelete = async () => {
-    
+    try{
+      const res=await deleteride(plan._id);
+      console.log(res)
+      if(res.success){
+        const updatedRides = myrides.filter((ride) => ride._id !== plan._id);
+        dispatch(setMyRides(updatedRides)); 
+        
+        setShowModal(false);
+        alert("ride deleted successfully");
+      }
+      }
+    catch(error){
+      console.error("Failed to delete ride:", error);
+      alert("Failed to delete the ride. Please try again.");
+    }
   };
 
   return (
