@@ -59,7 +59,9 @@ export default function HeroSection() {
             <div className="text-3xl font-bold text-white mb-1">₹50K+</div>
             Money Saved
           </div>
+          
         </div>
+        <div className="text-gray-400">(All Wanna Be Stats For Now hehe😅)</div>
       </div>
     </section>
   )
