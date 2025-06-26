@@ -41,7 +41,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard" className="hover:text-white transition-colors">
+                <Link href="/AllRides" className="hover:text-white transition-colors">
                   Find Rides
                 </Link>
               </li>
