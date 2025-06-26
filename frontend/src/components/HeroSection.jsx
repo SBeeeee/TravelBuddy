@@ -24,7 +24,7 @@ export default function HeroSection() {
 
         {/* Subheading */}
         <p className="text-lg sm:text-xl text-white/85 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Share rides with fellow VITians heading to Chennai, Bangalore, and more. Organize better, travel safer — no more WhatsApp chaos.
+          Share rides with fellow travellers heading to Chennai, Bangalore, and more. Organize better, travel safer — no more WhatsApp chaos.
         </p>
 
         {/* Action Buttons */}
