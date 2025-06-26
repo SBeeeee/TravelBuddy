@@ -11,9 +11,9 @@ export default function HeroSection() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         {/* Top Badge */}
-        <div className="inline-flex items-center mb-6 bg-white/10 text-sm font-medium px-5 py-1.5 rounded-full border border-white/20 text-white shadow-sm backdrop-blur">
+        <div className="inline-flex items-center mb-6 bg-white/10 text-lg font-medium px-5 py-1.5 rounded-full border border-white/20 text-white shadow-sm backdrop-blur">
           <BadgeCheck className="h-4 w-4 mr-2 text-yellow-300" />
-          Trusted by 1000+ VIT Students
+        Focused on Travel & Trust
         </div>
 
         {/* Headline */}
@@ -30,7 +30,7 @@ export default function HeroSection() {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 mb-14">
           <Link
-            href="/dashboard"
+            href="/AllRides"
             className="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-700 font-medium rounded-lg shadow hover:bg-gray-100 transition"
           >
             <Search className="h-5 w-5 mr-2" />

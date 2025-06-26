@@ -40,7 +40,7 @@ const fetchPage = async (updatedQuery) => {
             <select
               value={limit}
               onChange={handleLimitChange}
-              className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="border hover:cursor-pointer border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               <option value={5}>5</option>
               <option value={10}>10</option>
@@ -54,7 +54,7 @@ const fetchPage = async (updatedQuery) => {
             <button
               onClick={() => handlePageClick(page - 1)}
               disabled={page === 1}
-              className="px-3 py-1 rounded border text-sm disabled:opacity-50 hover:bg-gray-100"
+              className="px-3 py-1 hover:cursor-pointer rounded border text-sm disabled:opacity-50 hover:bg-gray-100"
             >
               Prev
             </button>
@@ -79,7 +79,7 @@ const fetchPage = async (updatedQuery) => {
             <button
               onClick={() => handlePageClick(page + 1)}
               disabled={page === totalPages}
-              className="px-3 py-1 rounded border text-sm disabled:opacity-50 hover:bg-gray-100"
+              className="px-3 py-1 hover:cursor-pointer rounded border text-sm disabled:opacity-50 hover:bg-gray-100"
             >
               Next
             </button>

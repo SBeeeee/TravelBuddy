@@ -121,7 +121,7 @@ export default function SearchFilters() {
 
           <button
             type="submit"
-            className="flex items-center justify-center gap-2 px-5 py-3 rounded-md text-white text-sm font-medium bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90 transition"
+            className="flex hover:cursor-pointer items-center justify-center gap-2 px-5 py-3 rounded-md text-white text-sm font-medium bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90 transition"
           >
             <Search className="w-4 h-4" /> Search Rides
           </button>
