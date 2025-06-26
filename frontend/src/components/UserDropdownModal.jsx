@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import { CircleUser } from "lucide-react";
+import Logout from "./Logout";
 
 export default function UserDropdownModal() {
   const { user } = useSelector((state) => state.auth);
@@ -34,6 +35,7 @@ export default function UserDropdownModal() {
             >
               My Plan
             </Link>
+            <Logout/>
           </div>
         </>
       ) : (
@@ -60,6 +62,7 @@ export default function UserDropdownModal() {
             >
               Find Rides
             </Link>
+
           </div>
         </>
       )}

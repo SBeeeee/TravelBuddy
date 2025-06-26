@@ -14,7 +14,7 @@ function User() {
         try {
             const userData = await CheckAuth();
             if (userData) {
-                dispatch(login(userData));
+                dispatch(login(userData.username));
             } else {
                 dispatch(logout());
             }
