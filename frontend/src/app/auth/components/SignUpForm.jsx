@@ -9,7 +9,7 @@ import Link from 'next/link';
 function SignupForm() {
   const [formData, setFormData] = useState({
     username: '',
-    email: '',
+    phone: '',
     password: '',
   });
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ function SignupForm() {
     setError('');
 
     try {
-      const data = await registerUser(formData.username, formData.password, formData.email);
+      const data = await registerUser(formData.username, formData.password, formData.phone);
       dispatch(login(data.name)); // login the user directly after signup
       router.push('/');
     } catch (err) {
@@ -68,16 +68,16 @@ function SignupForm() {
         </div>
 
         <div className="mb-5">
-          <label htmlFor="email" className="block text-gray-700 text-sm font-semibold mb-2">
-            Email
+          <label htmlFor="phone" className="block text-gray-700 text-sm font-semibold mb-2">
+            Phone Number
           </label>
           <input
-            id="email"
-            type="email"
-            value={formData.email}
+            id="phone"
+            type="tel"
+            value={formData.phone}
             onChange={handleChange}
             className="w-full px-4 py-2 rounded-xl bg-white/70 border border-gray-300 text-gray-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
-            placeholder="Enter your email"
+            placeholder="Enter your phone number"
             required
           />
         </div>
