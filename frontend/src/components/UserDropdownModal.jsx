@@ -18,19 +18,19 @@ export default function UserDropdownModal() {
           </h2>
           <div className="flex flex-col gap-2">
             <Link
-              href="/findrides"
+              href="/AllRides"
               className="bg-blue-100 text-blue-800 px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-200 transition"
             >
               Find Rides
             </Link>
             <Link
-              href="/postride"
+              href="/create"
               className="bg-green-100 text-green-800 px-3 py-2 rounded-md text-sm font-medium hover:bg-green-200 transition"
             >
               Post Your Ride
             </Link>
             <Link
-              href="/myplan"
+              href="/my-plans"
               className="bg-purple-100 text-purple-800 px-3 py-2 rounded-md text-sm font-medium hover:bg-purple-200 transition"
             >
               My Plan
@@ -45,19 +45,19 @@ export default function UserDropdownModal() {
           </p>
           <div className="flex flex-col gap-2">
             <Link
-              href="/login"
+              href="/auth/login"
               className="bg-blue-100 text-blue-800 px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-200 transition"
             >
               Login
             </Link>
             <Link
-              href="/signup"
+              href="/auth/signup"
               className="bg-green-100 text-green-800 px-3 py-2 rounded-md text-sm font-medium hover:bg-green-200 transition"
             >
               Signup
             </Link>
             <Link
-              href="/findrides"
+              href="/AllRides"
               className="bg-gray-100 text-gray-800 px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-200 transition"
             >
               Find Rides

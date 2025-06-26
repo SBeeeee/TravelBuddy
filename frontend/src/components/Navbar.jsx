@@ -50,7 +50,7 @@ export default function Navbar() {
           </nav>
 
           {/* Login/Signup Buttons */}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden md:flex items-center space-x-3 hover:cursor-pointer">
            <User/>
           </div>
 
