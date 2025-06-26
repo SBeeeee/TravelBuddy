@@ -1,6 +1,5 @@
 "use client"
 import React from 'react'
-import TravelCard from '@/app/AllRides/components/TravelCard'
 import { Wrench, AlertCircle, Loader2 } from "lucide-react";
 
 export default function Saved() {
