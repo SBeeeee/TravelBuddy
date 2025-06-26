@@ -64,8 +64,16 @@ export const logout =async (req,res)=>{
         const decoded=jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET);
         await User.findByIdAndUpdate(decoded.userId, { refreshToken:null });
     }
-    res.clearCookie("accessToken");
-		res.clearCookie("refreshToken");
+    res.clearCookie("accessToken", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "none",
+      });
+      res.clearCookie("refreshToken", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "none",
+      });
 		res.json({ message: "Logged out successfully" });
     }
     catch(error){
